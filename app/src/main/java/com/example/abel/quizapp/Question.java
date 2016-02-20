@@ -132,4 +132,8 @@ public class Question {
         return questions;
     }
 
+    public String toString() {
+        return this.questionText;
+    }
+
 }
