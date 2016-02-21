@@ -26,4 +26,8 @@ public class Answer {
         return answerIcon;
     }
 
+    public String toString() {
+        return this.answerText;
+    }
+
 }
