@@ -9,7 +9,7 @@ public class Answer {
     public Answer(String newAnswer) {
         this.answerText = newAnswer;
 
-        this.answerIcon = R.drawable.questionmark;
+        this.answerIcon = R.drawable.question;
     }
 
     public Answer(String newAnswer, int newIcon) {

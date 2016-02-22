@@ -27,6 +27,7 @@ public class QuestionAdapter extends ArrayAdapter<Question> {
         ImageView imageView = (ImageView) rowView.findViewById(R.id.logo);
 
         textView.setText(values[position].toString());
+        imageView.setBackgroundResource(values[position].getQuestionIcon());
 
         return rowView;
     }
