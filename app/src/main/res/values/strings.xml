@@ -1,12 +1,3 @@
 <resources>
-    <string name="app_name">QuizApp</string>
-    <string name="question">Enter Question Here...</string>
-
-    <string-array name="answers">
-        <item>Answer 1</item>
-        <item>Answer 2</item>
-        <item>Answer 3</item>
-    </string-array>
-
-
+    <string name="app_name">Quizz</string>
 </resources>
