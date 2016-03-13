@@ -1,8 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.abel.quizapp.QuestionFragment">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.abel.quizapp.QuestionActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,15 +33,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/answers_list"
-        android:layout_above="@+id/button_validate"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/question_text"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentLeft="true"
         android:choiceMode="singleChoice"
-        android:listSelector="#666666"/>
+        android:listSelector="#666666"
+        android:layout_above="@+id/stat_correct_title" />
 
     <Button
         android:layout_width="wrap_content"
@@ -46,7 +50,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:nestedScrollingEnabled="false" />
+        android:onClick="onClickValidate"
+        android:layout_marginTop="10dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -56,6 +61,71 @@
         android:layout_alignParentBottom="true"
         android:layout_alignEnd="@+id/answers_list"
         android:layout_alignParentRight="true"
-        android:nestedScrollingEnabled="false" />
+        android:onClick="onClickHint" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="# opened:"
+        android:id="@+id/stat_open_title"
+        android:layout_above="@+id/question_text"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/stat_open_value"
+        android:layout_above="@+id/question_text"
+        android:layout_toRightOf="@+id/stat_open_title"
+        android:layout_toEndOf="@+id/stat_open_title"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="# correct:"
+        android:id="@+id/stat_correct_title"
+        android:layout_above="@+id/stat_wrong_title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="# wrong:"
+        android:id="@+id/stat_wrong_title"
+        android:layout_above="@+id/button_validate"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/stat_correct_value"
+        android:layout_toRightOf="@+id/stat_correct_title"
+        android:layout_toEndOf="@+id/stat_correct_title"
+        android:layout_alignTop="@+id/stat_correct_title"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="0"
+        android:id="@+id/stat_wrong_value"
+        android:layout_toRightOf="@+id/stat_wrong_title"
+        android:layout_toEndOf="@+id/stat_wrong_title"
+        android:layout_alignTop="@+id/stat_wrong_title"
+        android:layout_marginLeft="5dp" />
 
 </RelativeLayout>

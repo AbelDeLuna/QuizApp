@@ -15,6 +15,10 @@ public class Question {
     private int questionIcon;
     private String googleHint;
 
+    private int statOpen;
+    private int statCorrect;
+    private int statWrong;
+
     public static final Question[] questions = {
             new Question("Question 1", "What is the answer of the question #1?", new Answer[]{
                     new Answer("Answer A1", R.drawable.pizza),
@@ -98,6 +102,10 @@ public class Question {
 
         this.questionIcon = R.drawable.question;
         this.googleHint = "answer is " + (this.correctAnswerNumber + 1);
+
+        this.statOpen = 0;
+        this.statCorrect = 0;
+        this.statWrong = 0;
     }
 
     public Question(String newQuestionTitle, String newQuestionText, Answer[] answers, int newCorrectAnswer, int newIcon) {
@@ -110,6 +118,18 @@ public class Question {
         this(newQuestionTitle, newQuestionText, answers, newCorrectAnswer, newIcon);
 
         this.googleHint = newHint;
+    }
+
+    public void increaseStatOpen() {
+        this.statOpen++;
+    }
+
+    public void increaseStatCorrect() {
+        this.statCorrect++;
+    }
+
+    public void increaseStatWrong() {
+        this.statWrong++;
     }
 
     public String getQuestionTitle() {
@@ -148,4 +168,15 @@ public class Question {
         return this.questionTitle;
     }
 
+    public int getStatOpen() {
+        return statOpen;
+    }
+
+    public int getStatCorrect() {
+        return statCorrect;
+    }
+
+    public int getStatWrong() {
+        return statWrong;
+    }
 }

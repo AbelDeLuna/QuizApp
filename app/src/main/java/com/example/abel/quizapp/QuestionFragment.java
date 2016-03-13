@@ -60,6 +60,8 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
         if (view != null && this.selectedQuestion != null) {
             TextView questionTitle = (TextView) view.findViewById(R.id.question_title);
             TextView question = (TextView) view.findViewById(R.id.question_text);
+            this.selectedQuestion.increaseStatOpen();
+            this.updateStats();
             Log.d("onStart", "questionTitle " + questionTitle);
             Log.d("onStart", "question " + question);
             questionTitle.setText(this.selectedQuestion.getQuestionTitle());
@@ -109,9 +111,27 @@ public class QuestionFragment extends Fragment implements View.OnClickListener {
                 }
                 else if (this.answerSelected == this.selectedQuestion.getCorrectAnswerNumber()) {
                     this.sp.increaseScore();
+                    this.selectedQuestion.increaseStatCorrect();
+                    this.updateStats();
+                }
+                else {
+                    this.selectedQuestion.increaseStatWrong();
+                    this.updateStats();
                 }
                 break;
         }
+    }
+
+    public void updateStats() {
+        View v = getView();
+        TextView questionStatOpen = (TextView) v.findViewById(R.id.stat_open_value);
+        TextView questionStatCorrect = (TextView) v.findViewById(R.id.stat_correct_value);
+        TextView questionStatWrong = (TextView) v.findViewById(R.id.stat_wrong_value);
+
+        questionStatOpen.setText(String.valueOf(this.selectedQuestion.getStatOpen()));
+        questionStatCorrect.setText(String.valueOf(this.selectedQuestion.getStatCorrect()));
+        questionStatWrong.setText(String.valueOf(this.selectedQuestion.getStatWrong()));
+
     }
 
 }

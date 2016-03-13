@@ -25,6 +25,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         this.questionSelected = Question.questions[(int) intent.getIntExtra(Question.EXTRA_QUESTION_NO, 0)];
+        this.questionSelected.increaseStatOpen();
         final ListView answersList = (ListView) findViewById(R.id.answers_list);
 
         answersList.setAdapter(new AnswerAdapter(this, this.questionSelected.getAnswerList()));
@@ -32,8 +33,16 @@ public class QuestionActivity extends AppCompatActivity {
         TextView questionTitle = (TextView) findViewById(R.id.question_title);
         TextView questionText = (TextView) findViewById(R.id.question_text);
 
+        TextView questionStatOpen = (TextView) findViewById(R.id.stat_open_value);
+        TextView questionStatCorrect = (TextView) findViewById(R.id.stat_correct_value);
+        TextView questionStatWrong = (TextView) findViewById(R.id.stat_wrong_value);
+
         questionTitle.setText(this.questionSelected.getQuestionTitle());
         questionText.setText(this.questionSelected.getQuestionText());
+
+        questionStatOpen.setText(String.valueOf(this.questionSelected.getStatOpen()));
+        questionStatCorrect.setText(String.valueOf(this.questionSelected.getStatCorrect()));
+        questionStatWrong.setText(String.valueOf(this.questionSelected.getStatWrong()));
 
         answersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -57,9 +66,11 @@ public class QuestionActivity extends AppCompatActivity {
         else {
             if (answerSelected == this.questionSelected.getCorrectAnswerNumber()) {
                 setResult(RESULT_OK);
+                this.questionSelected.increaseStatCorrect();
             }
             else {
                 setResult(RESULT_CANCELED);
+                this.questionSelected.increaseStatWrong();
             }
             finish();
         }
